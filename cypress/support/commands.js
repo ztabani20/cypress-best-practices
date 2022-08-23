@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import homePage from '../selectors/homePage.sel'
+import searchResultPage from '../selectors/searchResultPage.sel'
+
+
+Cypress.Commands.add('search', (desiredSearch) => { 
+    //cy.get(homePage.languageLbl).click()
+    cy.get(homePage.searchBar).type(desiredSearch)
+    cy.get(homePage.searchBtn).click()
+ })
