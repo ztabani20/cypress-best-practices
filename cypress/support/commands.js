@@ -28,7 +28,6 @@ import searchResultPage from '../selectors/searchResultPage.sel'
 
 
 Cypress.Commands.add('search', (desiredSearch) => { 
-    //cy.get(homePage.languageLbl).click()
     cy.get(homePage.searchBar).type(desiredSearch)
     cy.get(homePage.searchBtn).click()
  })
