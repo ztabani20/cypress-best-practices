@@ -13,6 +13,7 @@
 
 import homePage from '../selectors/homePage.sel'
 import searchResultPage from '../selectors/searchResultPage.sel'
+import clientCred from '../fixtures/example.json'
 
 describe('example to-do app', () => {
     beforeEach(() => {
@@ -27,7 +28,9 @@ describe('example to-do app', () => {
       cy.changeLanguage()
       cy.search('cypress.io')
       cy.get(searchResultPage.firstResultDomain).should('to.contain','https://www.cypress.io')
-      cy.search('Java Script')
+      cy.search('JavaScript')
+      // Test passing text from fixture 
+      cy.search(clientCred.testText)
 
     })
     
