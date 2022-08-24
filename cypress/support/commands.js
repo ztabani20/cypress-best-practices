@@ -26,9 +26,10 @@
 import homePage from '../selectors/homePage.sel'
 import topBar from '../selectors/topBar.sel'
 import searchResultPage from '../selectors/searchResultPage.sel'
+import searchBar from '../selectors/searchBar.sel'
 
 
-Cypress.Commands.add('search', (desiredSearch) => { 
+Cypress.Commands.add('search', (desiredSearch, searchType) => { 
 
     cy.get('body').then(($body) => {
         if ($body.find(homePage.mainLogo).length) {
@@ -39,6 +40,18 @@ Cypress.Commands.add('search', (desiredSearch) => {
             cy.get(topBar.topSearchBar).clear()
             cy.get(topBar.topSearchBar).type(desiredSearch)
             cy.get(topBar.topSearchBtn).click()
+        }
+        if(searchType == 'text'){
+
+        }else if(searchType == 'Images'){
+            cy.get(searchBar.imageSearch).click()
+
+        }else if(searchType == 'Videos'){
+
+            cy.get(searchBar.videoSearch).click()
+        }else if(searchType == 'News'){
+
+            cy.get(searchBar.newsSearch).click()
         }
       })
 })

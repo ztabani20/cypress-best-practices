@@ -28,9 +28,11 @@ describe('example to-do app', () => {
       cy.changeLanguage()
       cy.search('cypress.io')
       cy.get(searchResultPage.firstResultDomain).should('to.contain','https://www.cypress.io')
-      cy.search('JavaScript')
+      cy.search('JavaScript','Images')
       // Test passing text from fixture 
-      cy.search(clientCred.testText)
+      cy.search(clientCred.testText, 'Videos')
+
+      cy.search('cypress.io', 'News')
 
     })
     
