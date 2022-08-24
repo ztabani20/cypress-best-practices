@@ -24,10 +24,10 @@ describe('example to-do app', () => {
     })
 
     it('Verify if search is working', () => {
-        //cy.get(homePage.languageLbl).click()
-        //cy.get(homePage.signInBtn).click()
-        cy.search('cypress.io')
-        cy.get(searchResultPage.firstResultDomain).should('to.contain','https://www.cypress.io')
+      cy.changeLanguage()
+      cy.search('cypress.io')
+      cy.get(searchResultPage.firstResultDomain).should('to.contain','https://www.cypress.io')
+      cy.search('Java Script')
 
     })
     

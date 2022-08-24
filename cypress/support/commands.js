@@ -24,10 +24,27 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import homePage from '../selectors/homePage.sel'
+import topBar from '../selectors/topBar.sel'
 import searchResultPage from '../selectors/searchResultPage.sel'
 
 
 Cypress.Commands.add('search', (desiredSearch) => { 
-    cy.get(homePage.searchBar).type(desiredSearch)
-    cy.get(homePage.searchBtn).click()
+
+    cy.get('body').then(($body) => {
+        if ($body.find(homePage.mainLogo).length) {
+            cy.get(homePage.searchBar).clear()
+            cy.get(homePage.searchBar).type(desiredSearch)
+            cy.get(homePage.searchBtn).click()
+        } else {
+            cy.get(topBar.topSearchBar).clear()
+            cy.get(topBar.topSearchBar).type(desiredSearch)
+            cy.get(topBar.topSearchBtn).click()
+        }
+      })
+})
+
+ Cypress.Commands.add('changeLanguage', () => { 
+    cy.get(homePage.languageLbl).click()
  })
+
+ 

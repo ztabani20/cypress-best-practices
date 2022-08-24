@@ -2,5 +2,5 @@ module.exports = {
     languageLbl: '#SIvCob > a',
     searchBar: '.gLFyf',
     searchBtn: '.FPdoLc > center > .gNO89b',
-    signInBtn: '.gb_1'
+    mainLogo: '.lnXdpd'
 }
