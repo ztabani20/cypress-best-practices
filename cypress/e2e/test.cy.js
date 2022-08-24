@@ -24,17 +24,32 @@ describe('example to-do app', () => {
       cy.visit('https://google.com')
     })
 
-    it('Verify if search is working', () => {
-      cy.changeLanguage()
-      cy.search('cypress.io')
-      cy.get(searchResultPage.firstResultDomain).should('to.contain','https://www.cypress.io')
-      cy.search('JavaScript','Images')
+    it('Verify if text search is working', () => {
+      cy.changeLanguage('English')
+      cy.search('cypress.io','Text')
+/*       cy.get(searchResultPage.firstResultDomain).should('to.contain','https://www.cypress.io')
       // Test passing text from fixture 
-      cy.search(clientCred.testText, 'Videos')
-
-      cy.search('cypress.io', 'News')
+      cy.search(clientCred.testText, 'Text') */
 
     })
-    
+
+    it('Verify if image search is working', () => {
+      cy.changeLanguage('العربية')
+      cy.search('cypress.io','Images')
+
+    })
+
+   /*  it('Verify if video search is working', () => {
+      cy.changeLanguage('English')
+      cy.search('cypress.io', 'Videos')
+
+    })
+
+    it('Verify if news search is working', () => {
+      cy.changeLanguage('English')
+      cy.search('cypress.io', 'News')
+
+    }) */
+
   })
   

@@ -56,8 +56,15 @@ Cypress.Commands.add('search', (desiredSearch, searchType) => {
       })
 })
 
- Cypress.Commands.add('changeLanguage', () => { 
+ Cypress.Commands.add('changeLanguage', (desiredLanguage) => { 
+    const currentLangauge = cy.get(homePage.languageLbl).invoke('text')
+    cy.log(currentLangauge)
     cy.get(homePage.languageLbl).click()
+    if (currentLangauge == desiredLanguage) {
+        cy.get(homePage.languageLbl).click()
+    }else{
+
+    }
  })
 
  
