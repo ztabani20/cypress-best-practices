@@ -34,37 +34,44 @@ Cypress.Commands.add('search', (desiredSearch, searchType) => {
     cy.get('body').then(($body) => {
         if ($body.find(homePage.mainLogo).length) {
             cy.get(homePage.searchBar).clear()
-            cy.get(homePage.searchBar).type(desiredSearch)
-            cy.get(homePage.searchBtn).click()
+            cy.typeInput(homePage.searchBar, desiredSearch)
+            cy.clickBtn(homePage.searchBtn)
         } else {
             cy.get(topBar.topSearchBar).clear()
-            cy.get(topBar.topSearchBar).type(desiredSearch)
-            cy.get(topBar.topSearchBtn).click()
+            cy.typeInput(topBar.topSearchBar, desiredSearch)
+            cy.clickBtn(topBar.topSearchBtn)
         }
         if(searchType == 'text'){
 
         }else if(searchType == 'Images'){
-            cy.get(searchBar.imageSearch).click()
+            cy.clickBtn(searchBar.imageSearch)
 
         }else if(searchType == 'Videos'){
+            cy.clickBtn(searchBar.videoSearch)
 
-            cy.get(searchBar.videoSearch).click()
         }else if(searchType == 'News'){
+            cy.clickBtn(searchBar.newsSearch)
 
-            cy.get(searchBar.newsSearch).click()
         }
       })
 })
 
  Cypress.Commands.add('changeLanguage', (desiredLanguage) => { 
-    const currentLangauge = cy.get(homePage.languageLbl).invoke('val')
+    const currentLangauge = cy.get(homePage.languageLbl).invoke('text')
     cy.log(currentLangauge)
-    cy.get(homePage.languageLbl).click()
+    cy.clickBtn(homePage.languageLbl)
     if (currentLangauge == desiredLanguage) {
-        cy.get(homePage.languageLbl).click()
+        cy.clickBtn(homePage.languageLbl)
     }else{
 
     }
  })
 
+ Cypress.Commands.add('clickBtn', (targetedBtn) => { 
+    cy.get(targetedBtn).click()
+ })
+
+ Cypress.Commands.add('typeInput', (targetedInput, desiredText) => { 
+    cy.get(targetedInput).type(desiredText)
+ })
  
