@@ -27,6 +27,7 @@ describe('example to-do app', () => {
     it('Verify if text search is working', () => {
       cy.changeLanguage('English')
       cy.search('cypress.io','Text')
+      cy.search('othman al beetar', 'Text')
 /*       cy.get(searchResultPage.firstResultDomain).should('to.contain','https://www.cypress.io')
       // Test passing text from fixture 
       cy.search(clientCred.testText, 'Text') */
